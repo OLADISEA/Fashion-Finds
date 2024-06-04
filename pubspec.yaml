@@ -40,6 +40,8 @@ dependencies:
   http: ^1.2.1
   persistent_bottom_nav_bar: ^5.0.2
   flutter_screenutil: ^5.9.1
+  carousel_slider: ^4.2.1
+  flutter_custom_tab_bar: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,8 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/categories/
+    - assets/images/top_selling/
+    - assets/images/items/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

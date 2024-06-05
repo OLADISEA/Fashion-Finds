@@ -1,5 +1,6 @@
 import 'package:fashion_finds/src/ui/common/app_colors/app_colors.dart';
 import 'package:fashion_finds/src/ui/common/widgets/widgets.dart';
+import 'package:fashion_finds/src/ui/screen/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -38,7 +39,7 @@ class SignInPage extends StatelessWidget {
             myTextField(hintText: "Password", controller: passwordController),
             SizedBox(height: 10.h,),
             submitButton(text: "Continue",buttonColor: AppColor.splashScreenColor,onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ShoppingPreferencePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const HomePage()));
             }),
             SizedBox(height: 20.h,),
             Padding(

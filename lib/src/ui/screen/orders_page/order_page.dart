@@ -4,6 +4,8 @@ import 'package:fashion_finds/src/ui/screen/fashion_page/fashion_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'order_details/order_details.dart';
+
 class OrderPage extends StatefulWidget {
   OrderPage({Key? key}) : super(key: key);
 
@@ -184,19 +186,24 @@ class _OrderPageState extends State<OrderPage> with SingleTickerProviderStateMix
             ),
             margin: EdgeInsets.only(bottom: 10.h, left: 27.w, right: 27.w),
             child: ListTile(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> OrderDetails()));
+              },
               leading: Image.asset(
-                "assets/icons/notificationbing.png",
+                "assets/icons/order.png",
                 width: 40.w,
                 height: 40.w,
               ),
               title: Container(
-                width: 232.w,
-                height: 38.h,
+                width: 116.w,
+                height: 20.h,
                 child: reusableText(
-                  text: "Gilbert, you placed an order. Check your order history for full details",
-                  fontSize: 12.sp,
+                  text: "Order #456765",
+                  fontSize: 16.sp,
                 ),
               ),
+              subtitle: reusableText(text: "4 Items",fontSize: 12.sp,fontWeight: FontWeight.w400,color: Color(0XFF272727)),
+              trailing: Icon(Icons.arrow_forward_ios),
             ),
           );
         },

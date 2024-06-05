@@ -1,5 +1,6 @@
 import 'package:fashion_finds/src/ui/common/app_colors/app_colors.dart';
 import 'package:fashion_finds/src/ui/common/widgets/widgets.dart';
+import 'package:fashion_finds/src/ui/screen/login_screen/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -90,7 +91,7 @@ class _ShoppingPreferencePageState extends State<ShoppingPreferencePage> {
             ),
             child: Center( // Center the inner container within the outer container
               child: submitButton(text: "Finish", onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SignInPage()));
               },height: 52.h,width: 344.w,buttonColor: AppColor.splashScreenColor)
             ),
           )

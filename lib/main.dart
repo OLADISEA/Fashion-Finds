@@ -1,3 +1,4 @@
+import 'package:fashion_finds/src/bloc/log_in_bloc/login_bloc.dart';
 import 'package:fashion_finds/src/bloc/theme_bloc/theme_bloc.dart';
 import 'package:fashion_finds/src/bloc/theme_bloc/theme_mode.dart';
 import 'package:fashion_finds/src/bloc/theme_bloc/theme_state.dart';
@@ -14,6 +15,7 @@ void main() {
             BlocProvider<ThemeBloc>(
               create: (context) => ThemeBloc(),
             ),
+            BlocProvider(create: (context) => LoginBloc())
           ],
       child: const MyApp(),
     )

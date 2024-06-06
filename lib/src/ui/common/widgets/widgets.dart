@@ -2,23 +2,32 @@ import 'package:fashion_finds/src/ui/common/app_colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget reusableText({required String text, double? fontSize, FontWeight? fontWeight, String? fontFamily,Color? color}){
-  return Text(text,
+Widget reusableText({required String text, double? fontSize, FontWeight? fontWeight, String? fontFamily,Color? color, TextAlign? textAlign}){
+  return Text(text,textAlign: textAlign?? TextAlign.start,
     style: TextStyle(
       color: color?? Colors.black,
       fontSize: fontSize?? 20.sp,
       fontWeight: fontWeight?? FontWeight.w300,
-      fontFamily: fontFamily?? "Circular std"
+      fontFamily: fontFamily?? "Circular std",
+
     ),
   );
 }
 
-Widget myTextField({required String hintText,required TextEditingController controller}){
+Widget myTextField({
+  required String hintText,
+  required TextEditingController controller,
+  void Function(String)? onChanged,
+  bool? obscureText
+
+}){
   return SizedBox(
     //padding: EdgeInsets.only(left: 12.w,top: 19.h),
     width: 342.w,
     height: 56.h,
     child: TextField(
+      obscureText: obscureText?? false,
+      onChanged: onChanged,
       controller: controller,
       decoration: InputDecoration(
         filled: true,
@@ -163,5 +172,12 @@ Widget backArrow({required BuildContext context}){
       onTap: (){
         Navigator.pop(context);
       },
-      child: Image.asset("assets/icons/back-arrow.png"));
+      child: Container(
+          width: 40.w,
+          height: 40.h,
+          decoration: BoxDecoration(
+            color: AppColor.darkGrey,
+            shape: BoxShape.circle
+          ),
+          child: Image.asset("assets/icons/back-arrow.png")));
 }

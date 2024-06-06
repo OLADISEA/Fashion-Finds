@@ -1,12 +1,13 @@
 import 'package:fashion_finds/src/models/category_model.dart';
 import 'package:fashion_finds/src/ui/common/widgets/widgets.dart';
 import 'package:fashion_finds/src/ui/screen/items_page/items_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../models/top_selling_model.dart';
 import '../../common/app_colors/app_colors.dart';
 import '../fashion_page/widget/widget.dart';
+import '../filter_page/filter_page.dart';
 
 class CategoryPage extends StatefulWidget {
   final List<CategoryModel> categoryList;
@@ -19,6 +20,15 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   TextEditingController controller = TextEditingController();
   List<CategoryModel> filteredCategories = [];
+  List<TopSellingModel> itemsList = [
+    TopSellingModel(text: "Men's Fleece Pullover", price: "\$100.00", image: "women-wears.png"),
+    TopSellingModel(text: "Max Cirro Men's Slides", price: "\$150.97", image: "pull-over.png"),
+    TopSellingModel(text: "Men's Harrington Jacket", price: "\$110.00", image: "yellow_hoodie.png"),
+    TopSellingModel(text: "Max Cirro Men's Slides", price: "\$128.97", image: "men_hoodie.png"),
+    TopSellingModel(text: "Men's Harrington Jacket", price: "\$148", image: "jacket.png"),
+    TopSellingModel(text: "Max Cirro Men's Slides", price: "\$50", image: "pull-over.png"),
+  ];
+  List<TopSellingModel> myFilter = [];
 
   @override
   void initState() {
@@ -33,8 +43,8 @@ class _CategoryPageState extends State<CategoryPage> {
       });
     } else {
       setState(() {
-        filteredCategories = widget.categoryList.where((category) {
-          return category.name.toLowerCase().contains(query.toLowerCase());
+        myFilter = itemsList.where((items) {
+          return items.text.toLowerCase().contains(query.toLowerCase());
         }).toList();
       });
     }
@@ -67,87 +77,49 @@ class _CategoryPageState extends State<CategoryPage> {
               ],
             ),
             SizedBox(height: 16.sp),
-            filteredCategories.isNotEmpty?Column(
-              children: [
-                reusableText(
-                  text: "Shop by Categories",
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w700,
-                ),
-                SizedBox(height: 18.sp),
-
-              ],
-            ):Container(),
-            Expanded(
-              child: filteredCategories.isEmpty
-                  ? Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/images/search.png"),
-                    Container(
-                      alignment: Alignment.center,
-                      width: 342.h,
-                      height: 90.w,
-                      child: Center(
-                        child: reusableText(
-                          text: "Sorry, we couldn't find any matching result for your search",
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.w400,
-                          textAlign: TextAlign.center
-                        ),
-                      ),
-                    ),
-                    submitButton(text: "Explore Categories",buttonColor: AppColor.splashScreenColor,width: 185.w,
-                        onTap: (){
-                          Navigator.pop(context);
-                    })
-                  ],
-                ),
-              )
-                  : ListView.builder(
-                itemCount: filteredCategories.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 64.h,
-                    margin: EdgeInsets.only(bottom: 5.h),
-                    decoration: BoxDecoration(
-                      color: AppColor.darkGrey,
-                    ),
-                    child: ListTile(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ItemsPage(),
-                        ));
+            controller.text.isEmpty
+                ? Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  reusableText(
+                    text: "Shop by Categories",
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  SizedBox(height: 18.sp),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredCategories.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 64.h,
+                          margin: EdgeInsets.only(bottom: 5.h),
+                          decoration: const BoxDecoration(
+                            color: AppColor.darkGrey,
+                          ),
+                          child: ListTile(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ItemsPage(),
+                              ));
+                            },
+                            leading: Image.asset("assets/images/categories/${filteredCategories[index].image}"),
+                            title: Text(filteredCategories[index].name),
+                          ),
+                        );
                       },
-                      leading: Image.asset("assets/images/categories/${filteredCategories[index].image}"),
-                      title: Text(filteredCategories[index].name),
                     ),
-                  );
-                },
+                  ),
+                ],
               ),
-            ),
+            )
+                : myFilter.isEmpty
+                ? Expanded(child: EmptyCategory())
+                : Expanded(child: FilterPage(filteredItems: myFilter)),
           ],
         ),
       ),
     );
   }
 }
-
-// class NoResultsPage extends StatelessWidget {
-//   final String query;
-//
-//   NoResultsPage({required this.query});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('No Results Found'),
-//       ),
-//       body: Center(
-//         child: Text('No categories found for "$query"'),
-//       ),
-//     );
-//   }
-// }

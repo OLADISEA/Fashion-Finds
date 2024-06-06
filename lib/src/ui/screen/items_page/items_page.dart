@@ -34,7 +34,7 @@ class ItemsPage extends StatelessWidget {
             SizedBox(height: 18.h,),
             Expanded(
               child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // Two containers per row
                   crossAxisSpacing: 25.0,
                   mainAxisSpacing: 28.0,

@@ -2,6 +2,7 @@
 import 'package:fashion_finds/src/ui/screen/fashion_page/fashion_page.dart';
 import 'package:fashion_finds/src/ui/screen/notifications_page/notifications_page.dart';
 import 'package:fashion_finds/src/ui/screen/orders_page/order_page.dart';
+import 'package:fashion_finds/src/ui/screen/settings_page/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -38,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           Container(),
@@ -51,7 +53,7 @@ class _HomePageState extends State<HomePage> {
           //Container(color: Colors.red), // Home Screen
           NotificationsPage(),
           OrderPage(),
-          Container(child: Center(child: Text("Settings Page"),),), // Settings Screen
+          SettingsPage(),
         ],
         items: [
           PersistentBottomNavBarItem(

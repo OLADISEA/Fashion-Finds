@@ -19,7 +19,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         margin: EdgeInsets.only(top: 103.h,left: 27.w),
         child: Column(
@@ -30,39 +30,40 @@ class SignUpPage extends StatelessWidget {
                 height: 35.h,
                 //width: 99.w,
                 child: reusableText(
+                  color: Theme.of(context).colorScheme.onPrimary,
                   text: 'Create Account',
                   fontWeight: FontWeight.w700,
                   fontSize: 32.sp,
 
                 )),
             SizedBox(height: 32.h,),
-            myTextField(hintText: "Firstname", controller: firstNameController),
+            myTextField(
+                context: context,
+                hintText: "Firstname", controller: firstNameController),
             SizedBox(height: 5.h,),
-            myTextField(hintText: "Lastname", controller: lastNameController),
+            myTextField(
+                context: context,
+                hintText: "Lastname", controller: lastNameController),
             SizedBox(height: 5.h,),
-            myTextField(hintText: "Email Address", controller: emailController),
+            myTextField(
+                context: context,
+                hintText: "Email Address", controller: emailController),
             SizedBox(height: 5.h,),
-            myTextField(hintText: "Password", controller: passwordController),
+            myTextField(
+                context: context,
+                hintText: "Password", controller: passwordController),
             SizedBox(height: 10.h,),
             submitButton(text: "Continue",buttonColor: AppColor.splashScreenColor,onTap: (){
               Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ShoppingPreferencePage()));
             }),
             SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left:200.w,right: 24.w),
-              child: loginInfo(
-                  text: "Forgot Password?",
-                  navigationText: "Reset",
-                  size: 12.sp,
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ForgotPasswordPage()));
-                  }),
-            ),
+
             SizedBox(height: 10.h,),
             Container(
               margin: EdgeInsets.only(left: 50.w),
               child: Center(
                 child: loginInfo(
+                  context: context,
                     text: "Already have an account?",
                     navigationText: "Sign In",
                     size: 18.sp,

@@ -40,7 +40,7 @@ class _FashionPageState extends State<FashionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 63.h),

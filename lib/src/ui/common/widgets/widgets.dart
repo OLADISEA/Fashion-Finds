@@ -15,6 +15,7 @@ Widget reusableText({required String text, double? fontSize, FontWeight? fontWei
 }
 
 Widget myTextField({
+  required BuildContext context,
   required String hintText,
   required TextEditingController controller,
   void Function(String)? onChanged,
@@ -31,7 +32,7 @@ Widget myTextField({
       controller: controller,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Color(0XFFF4F4F4),
+        fillColor: Theme.of(context).colorScheme.tertiary,
         border: InputBorder.none,
         disabledBorder: OutlineInputBorder(
 
@@ -80,6 +81,7 @@ Widget myTextButton({
 }
 
 Widget loginInfo({
+  required BuildContext context,
   required String text,
   required String navigationText,
   double? size,
@@ -88,7 +90,7 @@ Widget loginInfo({
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        reusableText(text: text,fontSize: size,fontWeight: FontWeight.w100),
+        reusableText(text: text,fontSize: size,fontWeight: FontWeight.w100,color: Theme.of(context).colorScheme.onPrimary),
         SizedBox(width: 5.sp,),
         myTextButton(
             text: navigationText,
@@ -176,8 +178,8 @@ Widget backArrow({required BuildContext context}){
           width: 40.w,
           height: 40.h,
           decoration: BoxDecoration(
-            color: AppColor.darkGrey,
+            color: Theme.of(context).colorScheme.tertiary,
             shape: BoxShape.circle
           ),
-          child: Image.asset("assets/icons/back-arrow.png")));
+          child: Image.asset("assets/icons/back-arrow.png",color: Theme.of(context).colorScheme.onPrimary,)));
 }

@@ -22,7 +22,8 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
+      //backgroundColor: AppColor.whiteColor,
       body: Container(
         margin: EdgeInsets.only(top: 123.h, left: 27.w),
         child: Column(
@@ -32,6 +33,7 @@ class SignInPage extends StatelessWidget {
               height: 35.h,
               child: reusableText(
                 text: 'Sign in',
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.w700,
                 fontSize: 28.sp,
               ),
@@ -43,6 +45,7 @@ class SignInPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     myTextField(
+                      context: context,
                       hintText: "Email",
                       controller: emailController,
                       onChanged: (value) {
@@ -68,6 +71,7 @@ class SignInPage extends StatelessWidget {
                       ),
                     SizedBox(height: 5.h),
                     myTextField(
+                      context: context,
                       obscureText: true,
                       hintText: "Password",
                       controller: passwordController,
@@ -136,6 +140,7 @@ class SignInPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 200.w, right: 24.w),
                       child: loginInfo(
+                        context: context,
                         text: "Forgot Password?",
                         navigationText: "Reset",
                         size: 12.sp,
@@ -150,6 +155,7 @@ class SignInPage extends StatelessWidget {
                       margin: EdgeInsets.only(left: 50.w),
                       child: Center(
                         child: loginInfo(
+                          context: context,
                           text: "Don't have an account?",
                           navigationText: "Sign Up",
                           size: 18.sp,

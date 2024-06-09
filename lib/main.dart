@@ -10,31 +10,32 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(
-    MultiBlocProvider(
-          providers: [
-            BlocProvider<ThemeBloc>(
-              create: (context) => ThemeBloc(),
-            ),
-            BlocProvider(create: (context) => LoginBloc())
-          ],
-      child: const MyApp(),
-    )
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<ThemeBloc>(
+            create: (context) => ThemeBloc(),
+          ),
+          BlocProvider(create: (context) => LoginBloc())
+        ],
+        child: const MyApp(),
+      )
   );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(390,844),
+      designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, themeState) {
-          ThemeData themeData = themeState.status == AppThemeMode.light ? ThemeConstants.lightMode : ThemeConstants.darkMode;
+          ThemeData themeData = themeState.status == AppThemeMode.light
+              ? ThemeConstants.lightMode
+              : ThemeConstants.darkMode;
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: themeData,
@@ -45,4 +46,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -7,12 +7,12 @@ import '../../common/widgets/widgets.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   ForgotPasswordPage({super.key});
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         margin: EdgeInsets.only(top: 123.h,left: 27.w),
         child: Column(
@@ -22,13 +22,13 @@ class ForgotPasswordPage extends StatelessWidget {
                 height: 35.h,
                 //width: 99.w,
                 child: reusableText(
-                  text: 'Sign in',
+                  text: 'Forgot Password',
                   fontWeight: FontWeight.w700,
                   fontSize: 32.sp,
 
                 )),
             SizedBox(height: 32.h,),
-            myTextField(hintText: "Password", controller: passwordController),
+            myTextField(context: context,hintText: "Enter Email address", controller: emailController),
             SizedBox(height: 10.h,),
             submitButton(text: "Continue",buttonColor: AppColor.splashScreenColor,onTap: (){
               Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ResetPasswordPage()));

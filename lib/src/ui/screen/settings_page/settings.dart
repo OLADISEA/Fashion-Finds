@@ -20,7 +20,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
-        margin: EdgeInsets.only(top: 50.h),
+        margin: EdgeInsets.only(top: 51.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

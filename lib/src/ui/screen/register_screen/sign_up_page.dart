@@ -21,7 +21,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
-        margin: EdgeInsets.only(top: 103.h,left: 27.w),
+        margin: EdgeInsets.only(top: 80.h,left: 27.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

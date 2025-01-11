@@ -138,7 +138,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     SizedBox(height: 5.h),
                     Padding(
-                      padding: EdgeInsets.only(left: 200.w, right: 24.w),
+                      padding: EdgeInsets.only(left: 220.w, right: 24.w),
                       child: loginInfo(
                         context: context,
                         text: "Forgot Password?",
@@ -150,7 +150,7 @@ class SignInPage extends StatelessWidget {
                         },
                       ),
                     ),
-                    SizedBox(height: 40.h),
+                    SizedBox(height: 100.h),
                     Container(
                       margin: EdgeInsets.only(left: 50.w),
                       child: Center(
